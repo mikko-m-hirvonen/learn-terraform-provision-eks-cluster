@@ -1,5 +1,9 @@
 data "aws_secretsmanager_secret" "my-role" {
-  secret_id = "my-role"
+  name = "my-role"
+}
+
+data "aws_secretsmanager_secret_version" "my-role" {
+  secret_id = "${data.aws_secretsmanager_secret.my-role.id}"
 }
 
 variable "map_roles" {
@@ -12,7 +16,7 @@ variable "map_roles" {
 
   default = [
     {
-      rolearn  = data.aws_secretsmanager_secret.my-role.secret_string
+      rolearn  = jsondecode(data.aws_secretsmanager_secret_version.my-role.secret_string)["arn"]
       username = "KingMikko"
       groups   = ["system:masters"]
     },
