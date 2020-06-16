@@ -8,7 +8,7 @@ variable "map_roles" {
 
   default = [
     {
-      rolearn  = "arn:aws:iam::301182014273:role/CrewSandboxMikkoHirvonen"
+      rolearn  = ${{ secrets.MY_ROLE }}
       username = "KingMikko"
       groups   = ["system:masters"]
     },
