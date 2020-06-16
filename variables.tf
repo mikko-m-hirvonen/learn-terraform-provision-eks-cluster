@@ -1,5 +1,5 @@
-data "aws_secretsmanager_secret_version" "my-role" {
-  secret_id = "${data.aws_secretsmanager_secret.my-role.id}"
+data "aws_secretsmanager_secret" "my-role" {
+  secret_id = "my-role"
 }
 
 variable "map_roles" {
@@ -12,7 +12,7 @@ variable "map_roles" {
 
   default = [
     {
-      rolearn  = data.aws_secretsmanager_secret_version.my-role.secret_string
+      rolearn  = data.aws_secretsmanager_secret.my-role.secret_string
       username = "KingMikko"
       groups   = ["system:masters"]
     },
