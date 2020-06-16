@@ -3,7 +3,7 @@
 This repo is a companion repo to the [Provision an EKS Cluster learn guide](https://learn.hashicorp.com/terraform/kubernetes/provision-eks-cluster), containing
 Terraform configuration files to provision an EKS cluster on AWS.
 
-After installing the AWS CLI. Configure it to use your credentials.
+After installing the AWS CLI configure it to use your credentials.
 
 ```shell
 $ aws configure
