@@ -18,7 +18,13 @@ module "eks" {
 
   vpc_id = module.vpc.vpc_id
     
-  map_roles = var.map_roles
+  map_roles = [
+    {
+      rolearn  = TF_VAR_ROLE_ARN
+      username = "KingMikko"
+      groups   = ["system:masters"]
+    },
+  ]
 
   worker_groups = [
     {
