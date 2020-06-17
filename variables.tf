@@ -1,0 +1,1 @@
+variable "ROLE_ARN" {}
