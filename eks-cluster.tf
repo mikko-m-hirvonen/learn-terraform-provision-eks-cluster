@@ -5,6 +5,8 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
 }
 
+variable "ROLE_ARN" {}
+
 module "eks" {
   source       = "terraform-aws-modules/eks/aws"
   cluster_name = local.cluster_name
@@ -20,7 +22,7 @@ module "eks" {
     
   map_roles = [
     {
-      rolearn  = TF_VAR_ROLE_ARN
+      rolearn  = var.ROLE_ARN
       username = "KingMikko"
       groups   = ["system:masters"]
     },
