@@ -1,11 +1,3 @@
-data "aws_secretsmanager_secret" "my-role" {
-  name = "my-role"
-}
-
-data "aws_secretsmanager_secret_version" "my-role" {
-  secret_id = "${data.aws_secretsmanager_secret.my-role.id}"
-}
-
 variable "map_roles" {
   description = "Additional IAM roles to add to the aws-auth configmap."
   type = list(object({
@@ -16,7 +8,7 @@ variable "map_roles" {
 
   default = [
     {
-      rolearn  = jsondecode(data.aws_secretsmanager_secret_version.my-role.secret_string)["arn"]
+      rolearn  = TF_VAR_ROLE_ARN
       username = "KingMikko"
       groups   = ["system:masters"]
     },
