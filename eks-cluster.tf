@@ -24,8 +24,13 @@ module "eks" {
       username = "KingMikko"
       groups   = ["system:masters"]
     },
+    {
+      rolearn  = var.CODEBUILDROLE_ARN
+      username = "CodeBuild"
+      groups   = ["system:masters"]
+    },
   ]
-
+    
   worker_groups = [
     {
       name                          = "worker-group-1"
