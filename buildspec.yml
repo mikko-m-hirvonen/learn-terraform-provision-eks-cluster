@@ -3,6 +3,7 @@ version: 0.2
 env:
   secrets-manager:
     TF_VAR_ROLE_ARN: my-role:arn
+    TF_VAR_ECR_CODEBUILDROLE_ARN: ecr-codebuildrole: arn
 phases:
   install:
     commands:
